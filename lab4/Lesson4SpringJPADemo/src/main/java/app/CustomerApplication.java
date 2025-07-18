@@ -2,7 +2,9 @@ package app;
 
 import java.util.List;
 
+import domain.Address;
 import domain.CreditCard;
+import domain.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -12,16 +14,41 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import repositories.CustomerRepository;
 import domain.Customer;
+import repositories.StudentRepository;
 
 @SpringBootApplication
-@EnableJpaRepositories("repositories")
-@EntityScan("domain") 
+@EnableJpaRepositories(basePackages = "repositories")
+@EntityScan(basePackages = "domain")
 public class CustomerApplication implements CommandLineRunner{
-	
+	@Autowired
+	StudentRepository studentrepository;
+
 	@Autowired
 	CustomerRepository customerrepository;
 
-	public static void main(String[] args) {
+	public void addStudents() {
+		Address address = new Address("1000 4th St", "FairField", "IA", "52557");
+
+		Student student1 = new Student("Alfred Benefo Boahene", "Alfred.Boahene@miu.edu", "641-819-1111");
+		Student student2 = new Student("Bassel Bakr Abdelhamid Ahmed", "Bassel.Ahmed@miu.edu", "641-819-1112");
+		Student student3 = new Student("Khangai Dulamsuren", "kdulamsuren@miu.edu", "641-819-1113");
+		Student student4 = new Student("Kalab Dereje Deneke", "kdeneke@miu.edu", "641-819-1114");
+		Student student5 = new Student("Emmanuel Chilaka", "echilaka@miu.edu", "641-819-1115");
+
+		student1.setAddress(address);
+		student2.setAddress(address);
+		student3.setAddress(address);
+		student4.setAddress(address);
+		student5.setAddress(address);
+
+		studentrepository.save(student1);
+		studentrepository.save(student2);
+		studentrepository.save(student3);
+		studentrepository.save(student4);
+		studentrepository.save(student5);
+	}
+
+	public static void main(String[] args) throws Exception {
 		SpringApplication.run(CustomerApplication.class, args);
 	}
 
@@ -62,7 +89,18 @@ public class CustomerApplication implements CommandLineRunner{
 
 		System.out.println("-----------find by name ----------------");
 		System.out.println(customerrepository.findByName("John doe"));
-		
+
+		addStudents();
+
+		List<Student> students = studentrepository.findAll();
+		System.out.println("List Students :");
+		for (Student student : students){
+			System.out.println(student);
+		}
+
+		Student studentByName = studentrepository.getStudentByName("Emmanuel Chilaka");
+		System.out.println(studentByName);
+
 	}
 
 }
