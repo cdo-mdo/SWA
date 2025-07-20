@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="testdb@localhost">
+  <database-model serializer="dbm" dbms="MONGO" family-id="MONGO" format-version="4.53">
+    <root id="1">
+      <ServerVersion>8.0.11</ServerVersion>
+    </root>
+    <schema id="2" parent="1" name="admin"/>
+    <schema id="3" parent="1" name="config"/>
+    <schema id="4" parent="1" name="local"/>
+    <schema id="5" parent="1" name="testdb">
+      <Current>1</Current>
+      <LastIntrospectionLocalTimestamp>2025-07-19.15:01:07</LastIntrospectionLocalTimestamp>
+    </schema>
+    <table id="6" parent="5" name="customer"/>
+    <table id="7" parent="5" name="student"/>
+    <column id="8" parent="6" name="_id">
+      <Position>1</Position>
+      <StoredType>Int32|4s</StoredType>
+    </column>
+    <column id="9" parent="6" name="_class">
+      <Position>1</Position>
+      <StoredType>String|12s</StoredType>
+    </column>
+    <column id="10" parent="6" name="creditCard">
+      <Position>1</Position>
+      <StoredType>Object|4999544s</StoredType>
+    </column>
+    <column id="11" parent="6" name="email">
+      <Position>1</Position>
+      <StoredType>String|12s</StoredType>
+    </column>
+    <column id="12" parent="6" name="name">
+      <Position>1</Position>
+      <StoredType>String|12s</StoredType>
+    </column>
+    <column id="13" parent="6" name="phone">
+      <Position>1</Position>
+      <StoredType>String|12s</StoredType>
+    </column>
+    <column id="14" parent="6" name="creditCard.cardNumber">
+      <Position>2</Position>
+      <StoredType>String|12s</StoredType>
+    </column>
+    <column id="15" parent="6" name="creditCard.type">
+      <Position>3</Position>
+      <StoredType>String|12s</StoredType>
+    </column>
+    <column id="16" parent="6" name="creditCard.validationDate">
+      <Position>4</Position>
+      <StoredType>String|12s</StoredType>
+    </column>
+    <index id="17" parent="6" name="_id_">
+      <ColNames>_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <column id="18" parent="7" name="_id">
+      <Position>1</Position>
+      <StoredType>Int64|12s</StoredType>
+    </column>
+    <column id="19" parent="7" name="address">
+      <Position>1</Position>
+      <StoredType>Object|4999544s</StoredType>
+    </column>
+    <column id="20" parent="7" name="email">
+      <Position>1</Position>
+      <StoredType>String|12s</StoredType>
+    </column>
+    <column id="21" parent="7" name="name">
+      <Position>1</Position>
+      <StoredType>String|12s</StoredType>
+    </column>
+    <column id="22" parent="7" name="phone">
+      <Position>1</Position>
+      <StoredType>String|12s</StoredType>
+    </column>
+    <column id="23" parent="7" name="_class">
+      <Position>2</Position>
+      <StoredType>String|12s</StoredType>
+    </column>
+    <column id="24" parent="7" name="address.city">
+      <Position>2</Position>
+      <StoredType>String|12s</StoredType>
+    </column>
+    <column id="25" parent="7" name="address.state">
+      <Position>3</Position>
+      <StoredType>String|12s</StoredType>
+    </column>
+    <column id="26" parent="7" name="address.street">
+      <Position>4</Position>
+      <StoredType>String|12s</StoredType>
+    </column>
+    <column id="27" parent="7" name="address.zip">
+      <Position>5</Position>
+      <StoredType>String|12s</StoredType>
+    </column>
+    <index id="28" parent="7" name="_id_">
+      <ColNames>_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+  </database-model>
+</dataSource>
