@@ -8,10 +8,18 @@
             http://www.springframework.org/schema/integration/spring-integration.xsd">
 
     <channel id="wharehousechannel"/>
-    <channel id="shippingchannel"/>
+    <channel id="poststockcheckchannel"/>
+    <channel id="internationalchannel"/>
+    <channel id="nextdaychannel"/>
+    <channel id="normalchannel"/>
+
+    <router id="orderRouter"
+            input-channel="wharehousechannel"
+            ref="orderroutingservice"
+            method="routeOrder" />
 
     <service-activator input-channel="wharehousechannel"
-                       output-channel="shippingchannel"
+                       output-channel="poststockcheckchannel"
                        ref="warehouseservice"
                        method="checkStock"/>
 
@@ -19,8 +27,22 @@
                        ref="shippingservice"
                        method="ship"/>
 
+    <service-activator input-channel="internationalchannel"
+                       ref="internationalservice"
+                       method="ship"/>
+
+    <service-activator input-channel="nextdaychannel"
+                       ref="nextdayservice"
+                       method="ship"/>
+
+    <service-activator input-channel="normalchannel"
+                       ref="normalservice"
+                       method="ship"/>
+
     <beans:bean id="warehouseservice" class="esb.WarehouseActivator"/>
     <beans:bean id="shippingservice" class="esb.ShippingActivator"/>
-
-
+    <beans:bean id="internationalservice" class="esb.InternationalActivator"/>
+    <beans:bean id="nextdayservice" class="esb.NextdayActivator"/>
+    <beans:bean id="normalservice" class="esb.NormalActivator"/>
+    <beans:bean id="orderroutingservice" class="esb.OrderRoutingService"/>
 </beans:beans>
