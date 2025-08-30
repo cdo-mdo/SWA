@@ -1,0 +1,6 @@
+Part 4 - Answer:
+
+The solution is we deploy a backend server to interface with 15 microservices and get all data from them. The backend server provides API for mobile app to call to get data. The backend server can help to improve performance by:
+- Backend server is close to microservices for getting data faster.
+- Backend server can restructure data to optimize data for client request.
+- Backend server can apply catch to improve performance.

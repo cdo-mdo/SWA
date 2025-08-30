@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: product-service
+
+management:
+  tracing:
+    # 100% sample for demo; use 0.1–0.5 in production
+    sampling:
+      probability: 1.0
+    # Propagation headers; add B3 if you need compatibility with older systems
+    propagation:
+      type: W3C,B3
+  zipkin:
+    tracing:
+      endpoint: http://localhost:9411/api/v2/spans
+
+# Optional: include trace/span IDs in log lines
+logging:
+  pattern:
+    level: "%5p [${spring.application.name:},traceId=%mdc{traceId:-},spanId=%mdc{spanId:-}]"
+
+server:
+  port: 8081
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
