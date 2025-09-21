@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: owner-service
+  kafka:
+    bootstrap-servers: 127.0.0.1:9092
+    consumer:
+      group-id: owner-svc
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "*"
+        # Because SpeedService (Streams) may not include type headers, force the expected type:
+        spring.json.value.default.type: cs590de.ownerservice.model.SpeedingEvent
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer

@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: speed-service
+  kafka:
+    bootstrap-servers: 127.0.0.1:9092
+    streams:
+      application-id: speed-service-app
+      properties:
+        default.key.serde: org.apache.kafka.common.serialization.Serdes$StringSerde
+        default.value.serde: org.springframework.kafka.support.serializer.JsonSerde

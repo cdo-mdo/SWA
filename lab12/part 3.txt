@@ -1,0 +1,29 @@
+What I understand the monolith, modular monolith and microservices are:
+- monolith
+  - One codebase
+  - One DB
+  - tightly coupled
+  
+- modular monolith   
+  - single deployment
+  - multiple components
+  - internal calls (interprocess, interfaces)
+  - shared DB
+  
+- microservices
+  - multiple deployment
+  - independent DB
+  - REST/gRPC, Async Message Queue
+  - Independent scaling
+  
+Some factors to be considered for choosing modular monolith or microservies are:
+| Factor                   | Modular Monolith           | Microservices                                 |
+| ------------------------ | -------------------------- | --------------------------------------------- |
+| Team size & SRE maturity | Small/medium; little SRE   | Large; dedicated SRE/platform                 |
+| Domain maturity          | Still discovering          | Well understood bounded contexts              |
+| Release cadence          | Weekly/biweekly OK         | Many independent daily deploys                |
+| Data consistency         | Many cross-module ACID tx  | Eventual consistency OK; per-service DB       |
+| Performance              | Low latency, in-proc calls | Network hops acceptable                       |
+| Tech heterogeneity       | Mostly uniform             | Strong need for different stacks              |
+| Ops overhead             | Low                        | High (monitoring, tracing, gateways, on-call) |
+  
