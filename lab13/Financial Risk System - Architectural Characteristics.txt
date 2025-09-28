@@ -1,0 +1,42 @@
+a) Architectural characteristics of the ticket system
+
+Performance:
+- Deadline to make risk report is before 9.am Singapore time.
+- The system must support up to 50 concurrent users accessing the risk report.
+- The response time for downloading or viewing the report over the internet must not exceed 3 seconds.
+- The response time for accessing the report directly on the server must not exceed 1 second.
+
+Scalability:
+- The system must be able to cope with trade volumes for the next 5 years.
+- The number of trade increase is 10 trades per day. It would be 3650 trades per year.
+- Each day, the engine recalculates all counterparties and all trades up to date (e.g., the 5,000 base trades + all new ones).
+
+Security:
+- This system must follow bank policy that states system access is restricted to authenticated and authorized users only.
+- Reports must only be distributed to authorized users.
+- Only a subset of the authorized users are permitted to modify the parameters used in the risk calculations.
+- Although desirable, there are no single sign-on requirements.
+- All access to the system and reports will be within the confines of the bank’s global network.
+
+Availability:
+- System acceptable downtime is less than 30 minutes/day. The availability is 98% 
+
+Adaptability:
+- When the new Reference Data System is ready. The Financial Risk System must be configured to work with new system within 3 months. That is the time the legacy system to be decommissionized.
+
+Configurability:
+- Input files used in the risk calculation process must be retained for 1 year.
+
+Auditability:
+- The following events must be recorded in the system audit logs: 
+  – Report generation. 
+  – Modification of risk calculation parameters.
+
+Traceability:
+- The system should take appropriate steps to recover from an error if possible, but all errors 
+should be logged.
+- A Simple Network Management Protocol (SNMP) trap should be sent to the bank’s Central Monitoring Service in the following circumstances:
+  - When there is a fatal error with a system component.
+  - When reports have not been generated before 9am Singapore time.
+  
+  
